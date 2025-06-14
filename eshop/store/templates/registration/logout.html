@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+{% csrf_token %}
+<h1>You have been logged out!</h1>
+<p>Thank you for using our app. You have been successfully logged out.</p>
+<a href="{% url 'store:login' %}">Click here to log in again</a>
+{% endblock content %}
+
+
+<!-- In your base.html or any other template where you have the logout link -->
+<form method="post" action="{% url 'logout' %}">
+    {% csrf_token %}
+    <button type="submit" class="nav-link bg-danger ms-2">Logout</button>
+</form>

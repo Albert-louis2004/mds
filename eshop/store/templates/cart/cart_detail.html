@@ -1,0 +1,19 @@
+{% block content %}
+
+<h2>Coșul tău de cumpărături</h2>
+
+{% if cart_items %}
+    <ul>
+        {% for item in cart_items %}
+            <li>
+                <p>{{ item.laptop.name }} - {{ item.quantity }} x {{ item.laptop.price }} RON</p>
+                <a href="{% url 'store:remove_from_cart' item.id %}">Elimină</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <p><strong>Total:</strong> {{ total_price }} RON</p>
+{% else %}
+    <p>Coșul tău este gol.</p>
+{% endif %}
+
+{% endblock %}
